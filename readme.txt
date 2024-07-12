@@ -4,8 +4,9 @@ Welcome to Thomas Couloud's project repository. This repository contains all my 
 Repository Content
 1. ECG Classification
 2. Dow Jones Model Deployment
-3. Certifications
-4. CV
+3. SQL application
+4. Certifications
+5. CV
 
 My curriculum vitae is available in this folder. You can find a summary of my academic and professional background.
 5. SQL Questions Application
