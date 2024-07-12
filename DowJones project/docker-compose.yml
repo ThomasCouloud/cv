@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: api.dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./trainedModel:/api/trainedModel
+      - ./LoadData/data/OPA.csv:/LoadData/data/OPA.csv
+      - ./mse_records.csv:/api/mse_records.csv #addition of api folder in order for the file to be accessible
+    
+  data:
+    build:
+      context: .
+      dockerfile: data.dockerfile
+    volumes:
+      - ./LoadData/data:/LoadData/data
+
+  model:
+    build:
+      context: .
+      dockerfile: model.dockerfile
+    volumes:
+      - ./trainedModel:/model_training/trainedModel
+      - ./LoadData/data:/model_training/data
+      - ./mse_records.csv:/mse_records.csv
+  
+  monitoring:
+    build:
+      context: .
+      dockerfile: monitoring.dockerfile
+    volumes:
+      - ./mse_records.csv:/mse_records.csv
+      - ./monitoring/encrypted_credentials.dat:/encrypted_credentials.dat
+      - ./monitoring.log:/monitoring.log
+      - ./monitoring/graph:/graph
+      - ./api:/api
+
+     
+      

@@ -1,0 +1,66 @@
+Project-root
+.pytest_cache
+│   v
+│   │   cache
+│   │   │   ...
+│   ├── .gitignore
+│   ├── CACHEDIR.TAG
+│   ├── README.md
+api
+│   mse_records.csv
+│   __pycache__
+│   │   ├── app.cpython-311.pyc
+│   │   ├── load.cpython-311.pyc
+│   │   ├── models.cpython-311.pyc
+│   │   ├── model_training.cpython-311.pyc
+│   │   ├── prepro.cpython-311.pyc
+│   │   ├── routes.cpython-311.pyc
+│   │   ├── utils.cpython-311.pyc
+│   │   ├── __init__.cpython-311.pyc
+│   ├── app.py
+│   ├── models.py
+│   ├── model_training.py
+│   ├── prepro.py
+│   ├── routes.py
+LoadData
+│   data
+│   │   save
+│   │   │   ...
+│   │   ├── OPA.csv
+│   ├── DJ-1Day.xlsx
+│   ├── LoadDataBatch.py
+│   ├── LoadRecurentData.py
+monitoring
+│   graph
+│   __pycache__
+│   │   ├── encryption_utils.cpython-311.pyc
+│   │   ├── monitoring.cpython-311.pyc
+│   ├── encryption_utils.py
+│   ├── monitoring.log
+│   ├── monitoring.py
+│   ├── secret.key
+structure
+│   ├── structure.py
+│   ├── structure_projet.txt
+tests
+│   .pytest_cache
+│   │   v
+│   │   │   ...
+│   │   ├── .gitignore
+│   │   ├── CACHEDIR.TAG
+│   │   ├── README.md
+│   __pycache__
+│   │   ├── test_api.cpython-311-pytest-7.4.0.pyc
+│   │   ├── test_models.cpython-311-pytest-7.4.0.pyc
+│   ├── test_api.py
+│   ├── test_models.py
+trainedModel
+│   ├── model_20231030_155024.joblib
+├── api.dockerfile
+├── data.dockerfile
+├── docker-compose.yml
+├── model.dockerfile
+├── monitoring.dockerfile
+├── mse_records.csv
+├── README.md
+├── requirements.txt
