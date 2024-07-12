@@ -38,6 +38,7 @@ fake_users_db = {
     },
 }
 
+
 def fake_hash_password(password: str):
     return "fakehashed" + password
 
@@ -107,44 +108,60 @@ async def read_users_me(
 ):
     return current_user
 
+
 @router.get("/")
 def root(current_user: Annotated[User, Depends(get_current_active_user)]):
     return {"message": "API en ligne!"}
 
-path_to_model_directory = os.path.join(os.path.dirname(__file__), 'trainedModel')
+
+path_to_model_directory = os.path.join(os.path.dirname(__file__), "trainedModel")
+
 
 def get_latest_model_path(directory):
-    files = [os.path.join(directory, f) for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f))]
+    files = [
+        os.path.join(directory, f)
+        for f in os.listdir(directory)
+        if os.path.isfile(os.path.join(directory, f))
+    ]
     return max(files, key=os.path.getctime)
+
 
 latest_model_filename = get_latest_model_path(path_to_model_directory)
 best_model = joblib.load(latest_model_filename)
 
+
 @router.post("/predict/")
 async def predict(
-    request: PredictionRequest, 
-    current_user: Annotated[User, Depends(get_current_active_user)]
+    request: PredictionRequest,
+    current_user: Annotated[User, Depends(get_current_active_user)],
 ):
     print("Fonction predict appelée")
     df = load_data(request.ticker)
     train_X, train_y, test_X, test_y, sc = preprocess_data(df)
 
     if request.days > len(test_X):
-        raise HTTPException(status_code=400, detail="Le nombre de jours demandés dépassent les données de test disponibles")
-    features = test_X[:request.days]
+        raise HTTPException(
+            status_code=400,
+            detail="Le nombre de jours demandés dépassent les données de test disponibles",
+        )
+    features = test_X[: request.days]
     pred = best_model.predict(features)
     predictions = sc.inverse_transform(pred.reshape(-1, 1))
-    actual_values = sc.inverse_transform(test_y[:request.days])
+    actual_values = sc.inverse_transform(test_y[: request.days])
     mse = mean_squared_error(actual_values, predictions)
     print(type(predictions.tolist()))
     print(type(mse))
-    current_dir=os.getcwd()#added to try to understand why mse_records.csv is not found
-    print("Current working directory:", current_dir) #added to try to understand why mse_records.csv is not found
+    current_dir = (
+        os.getcwd()
+    )  # added to try to understand why mse_records.csv is not found
+    print(
+        "Current working directory:", current_dir
+    )  # added to try to understand why mse_records.csv is not found
     current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    mse_data = pd.DataFrame([[current_time, request.ticker, request.days, mse]],
-                            columns=['Time', 'Ticker', 'Days', 'MSE'])
-    mse_data.to_csv('mse_records.csv', mode='a', header=False, index=False)
+    mse_data = pd.DataFrame(
+        [[current_time, request.ticker, request.days, mse]],
+        columns=["Time", "Ticker", "Days", "MSE"],
+    )
+    mse_data.to_csv("mse_records.csv", mode="a", header=False, index=False)
 
     return {"predictions": predictions.tolist(), "mse": mse}
-
-
