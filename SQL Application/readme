@@ -1,0 +1,68 @@
+SQL Practice Application with Streamlit
+
+Welcome to the SQL Practice Application Project. This project provides a Streamlit application that allows users to practice SQL questions on small databases and view the corrected answers. The repository contains the necessary scripts to launch the app.py Streamlit application.
+Repository Content
+1. app.py
+
+This is the main application script. Running this script will launch the Streamlit application for SQL practice.
+2. init_db.py
+
+This script initializes the databases used in the application. It sets up the required data structures and populates the databases with initial data.
+3. test_db.py
+
+This script contains tests to ensure that the databases are correctly initialized and that the SQL queries return the expected results.
+4. data
+
+This directory contains the small databases used for SQL practice questions. Each database is structured to provide a variety of SQL query challenges.
+5. answers
+
+This directory contains the SQL questions and their corresponding corrected answers. Each question is designed to test different aspects of SQL querying skills.
+6. requirements.txt
+
+This file lists the required libraries to run the Streamlit application.
+Prerequisites
+
+To run the application, you need to have Python 3.8 or later installed along with the required libraries listed in requirements.txt.
+Installation
+
+    Clone this repository to your local machine:
+
+    bash
+
+git clone https://github.com/ThomasCouloud/sql-practice-app.git
+cd sql-practice-app
+
+Create a virtual environment and activate it:
+
+bash
+
+python -m venv venv
+source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+
+Install the required libraries:
+
+bash
+
+pip install -r requirements.txt
+
+Initialize the databases:
+
+bash
+
+python init_db.py
+
+(Optional) Run tests to ensure everything is set up correctly:
+
+bash
+
+    python test_db.py
+
+Running the Application
+
+To run the Streamlit application, use the following command in your terminal:
+
+bash
+
+streamlit run app.py
+
+This will open the Streamlit interface in your default web browser, where you can start practicing SQL questions.

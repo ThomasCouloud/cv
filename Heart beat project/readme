@@ -1,0 +1,10 @@
+ECG Classification Project
+
+Welcome to the ECG Classification Project. This project aims to test various models for classifying ECGs into two binary labels: healthy (0) and unhealthy (1). The repository contains Jupyter notebooks used for testing different models and the associated report detailing the findings.
+Repository Content
+1. notebooks
+
+This directory contains the Jupyter notebooks used for testing different models on the ECG data. Each notebook explores a different model or approach for ECG classification.
+2. report
+
+This directory contains the report associated with the project. The report provides an in-depth analysis of the models tested, including their performance metrics and insights on their effectiveness.

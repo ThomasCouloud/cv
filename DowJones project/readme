@@ -1,0 +1,27 @@
+Dow Jones Stock Price Prediction Model Deployment
+
+Welcome to the Dow Jones Stock Price Prediction Model Deployment project. This project is designed to retrieve financial and trend data, train a prediction model, deploy an API for predictions, and monitor model performance with email alerts.
+Repository Content
+1. LoadData
+
+This directory contains the scripts necessary to retrieve data from Yahoo Finance and Google Trends. The data is then stored in a CSV file for later use.
+2. api
+
+This directory contains the API endpoints. The endpoints allow real-time predictions using the deployed prediction model. It also contains the scripts for training the prediction model, including data preprocessing, model training, and saving the trained models.
+3. monitoring
+
+This directory contains the scripts for monitoring model performance. It includes mechanisms to send email alerts in case of performance degradation.
+4. tests
+
+This directory contains unit tests to ensure that all parts of the project are functioning correctly.
+5. trainedModel
+
+This directory contains the saved prediction models after training.
+6. structure
+
+This directory contains files related to the project's structure and organization.
+Prerequisites
+
+    Docker
+    Python 3.8 or later
+    Python libraries listed in requirements.txt
